@@ -187,23 +187,23 @@
             position: relative;
         }
 
-        /* Combined Layout for the Pre-Wedding Shoot Section */
-        .pre-wedding-flex {
+        /* Combined Layout for Event Sections with Slideshow */
+        .event-flex {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 25px;
         }
 
-        .pre-wedding-info {
+        .event-info {
             flex: 1.2;
         }
 
-        /* Side Show Container for Pre-Wedding Photos */
-        .side-slideshow-container {
+        /* Event Slideshow Container */
+        .event-slideshow-container {
             flex: 1;
             max-width: 240px;
-            height: 160px;
+            height: 180px;
             position: relative;
             border-radius: 6px;
             overflow: hidden;
@@ -211,19 +211,19 @@
             background: #111;
         }
 
-        .side-slide {
+        .event-slide {
             display: none;
             height: 100%;
             width: 100%;
         }
 
-        .side-slide img {
+        .event-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* Arrow navigation design shared between both sliders */
+        /* Arrow navigation design shared between all sliders */
         .prev, .next {
             cursor: pointer;
             position: absolute;
@@ -358,11 +358,11 @@
                 border-right: 10px solid white;
                 border-left: 0;
             }
-            .pre-wedding-flex {
+            .event-flex {
                 flex-direction: column;
                 align-items: stretch;
             }
-            .side-slideshow-container {
+            .event-slideshow-container {
                 max-width: 100%;
                 height: 220px;
                 margin-top: 10px;
@@ -425,26 +425,26 @@
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="pre-wedding-flex">
-                            <div class="pre-wedding-info">
+                        <div class="event-flex">
+                            <div class="event-info">
                                 <div class="event-title">Pre-Wedding Photoshoot</div>
                                 <div class="event-date">The Journey Begins</div>
                                 <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
                             </div>
                             
-                            <div class="side-slideshow-container">
-                                <div class="side-slide fade">
+                            <div class="event-slideshow-container" id="prewedding-slideshow">
+                                <div class="event-slide fade">
                                     <img src="pre_wedding_shoot/pre_wedding_1.jpg" alt="Pre-Wedding Shoot 1">
                                 </div>
-                                <div class="side-slide fade">
+                                <div class="event-slide fade">
                                     <img src="pre_wedding_shoot/pre_wedding_2.jpg" alt="Pre-Wedding Shoot 2">
                                 </div>
-                                <div class="side-slide fade">
+                                <div class="event-slide fade">
                                     <img src="pre_wedding_shoot/pre_wedding_3.jpg" alt="Pre-Wedding Shoot 3">
                                 </div>
 
-                                <a class="prev" onclick="plusSideSlides(-1)">❮</a>
-                                <a class="next" onclick="plusSideSlides(1)">❯</a>
+                                <a class="prev" onclick="changeSlide(-1, 'prewedding')">❮</a>
+                                <a class="next" onclick="changeSlide(1, 'prewedding')">❯</a>
                             </div>
                         </div>
                     </div>
@@ -453,41 +453,140 @@
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="event-title">Mehendi Ceremony</div>
-                        <div class="event-date">Day 1 - Evening</div>
-                        <p>Henna designs, festive songs, and beautiful green tones setting up the wedding vibe.</p>
+                        <div class="event-flex">
+                            <div class="event-info">
+                                <div class="event-title">Mehendi Ceremony</div>
+                                <div class="event-date">Day 1 - Evening</div>
+                                <p>Henna designs, festive songs, and beautiful green tones setting up the wedding vibe.</p>
+                            </div>
+                            
+                            <div class="event-slideshow-container" id="mehendi-slideshow">
+                                <div class="event-slide fade">
+                                    <img src="mehendi/mehendi_1.jpg" alt="Mehendi Ceremony 1">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="mehendi/mehendi_2.jpg" alt="Mehendi Ceremony 2">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="mehendi/mehendi_3.jpg" alt="Mehendi Ceremony 3">
+                                </div>
+
+                                <a class="prev" onclick="changeSlide(-1, 'mehendi')">❮</a>
+                                <a class="next" onclick="changeSlide(1, 'mehendi')">❯</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="event-title">Sangeet Program</div>
-                        <div class="event-date">Day 1 - Night</div>
-                        <p>A night full of energetic dance performances, family acts, and dynamic music celebrations.</p>
+                        <div class="event-flex">
+                            <div class="event-info">
+                                <div class="event-title">Sangeet Program</div>
+                                <div class="event-date">Day 1 - Night</div>
+                                <p>A night full of energetic dance performances, family acts, and dynamic music celebrations.</p>
+                            </div>
+                            
+                            <div class="event-slideshow-container" id="sangeet-slideshow">
+                                <div class="event-slide fade">
+                                    <img src="sangeet/sangeet_1.jpg" alt="Sangeet Program 1">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="sangeet/sangeet_2.jpg" alt="Sangeet Program 2">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="sangeet/sangeet_3.jpg" alt="Sangeet Program 3">
+                                </div>
+
+                                <a class="prev" onclick="changeSlide(-1, 'sangeet')">❮</a>
+                                <a class="next" onclick="changeSlide(1, 'sangeet')">❯</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="event-title">Haldi Ceremony</div>
-                        <div class="event-date">Day 2 - Morning</div>
-                        <p>The auspicious yellow dress occasion filled with turmeric blessings, water splashes, and joy.</p>
+                        <div class="event-flex">
+                            <div class="event-info">
+                                <div class="event-title">Haldi Ceremony</div>
+                                <div class="event-date">Day 2 - Morning</div>
+                                <p>The auspicious yellow dress occasion filled with turmeric blessings, water splashes, and joy.</p>
+                            </div>
+                            
+                            <div class="event-slideshow-container" id="haldi-slideshow">
+                                <div class="event-slide fade">
+                                    <img src="haldi/haldi_1.jpg" alt="Haldi Ceremony 1">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="haldi/haldi_2.jpg" alt="Haldi Ceremony 2">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="haldi/haldi_3.jpg" alt="Haldi Ceremony 3">
+                                </div>
+
+                                <a class="prev" onclick="changeSlide(-1, 'haldi')">❮</a>
+                                <a class="next" onclick="changeSlide(1, 'haldi')">❯</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="event-title">The Main Marriage Event</div>
-                        <div class="event-date">Day 2 - Muhurtam</div>
-                        <p>The sacred vows, wedding pheras, and exchange of garlands at Diamond Palace.</p>
+                        <div class="event-flex">
+                            <div class="event-info">
+                                <div class="event-title">The Main Marriage Event</div>
+                                <div class="event-date">Day 2 - Muhurtam</div>
+                                <p>The sacred vows, wedding pheras, and exchange of garlands at Diamond Palace.</p>
+                            </div>
+                            
+                            <div class="event-slideshow-container" id="wedding-slideshow">
+                                <div class="event-slide fade">
+                                    <img src="wedding/wedding_1.jpg" alt="Wedding Ceremony 1">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="wedding/wedding_2.jpg" alt="Wedding Ceremony 2">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="wedding/wedding_3.jpg" alt="Wedding Ceremony 3">
+                                </div>
+
+                                <a class="prev" onclick="changeSlide(-1, 'wedding')">❮</a>
+                                <a class="next" onclick="changeSlide(1, 'wedding')">❯</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="event-title">Grand Reception</div>
-                        <div class="event-date">Day 2 - Dinner</div>
-                        <p>Welcoming the newlywed couple into their new life journey over a celebratory royal banquet.</p>
+                        <div class="event-flex">
+                            <div class="event-info">
+                                <div class="event-title">Grand Reception</div>
+                                <div class="event-date">Day 2 - Dinner</div>
+                                <p>Welcoming the newlywed couple into their new life journey over a celebratory royal banquet.</p>
+                            </div>
+                            
+                            <div class="event-slideshow-container" id="reception-slideshow">
+                                <div class="event-slide fade">
+                                    <img src="reception/reception_1.jpg" alt="Reception 1">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="reception/reception_2.jpg" alt="Reception 2">
+                                </div>
+                                <div class="event-slide fade">
+                                    <img src="reception/reception_3.jpg" alt="Reception 3">
+                                </div>
+
+                                <a class="prev" onclick="changeSlide(-1, 'reception')">❮</a>
+                                <a class="next" onclick="changeSlide(1, 'reception')">❯</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -496,10 +595,10 @@
         <section class="venue-section">
             <h2 class="section-title">Wedding Venue & Locations</h2>
             <p style="text-align: center; font-weight: 600; margin-bottom: 10px; color: #2c3e50;">Diamond Palace, Nagpur</p>
-            <p style="text-align: center; color: #7f8c8d; font-size: 0.95rem; margin-bottom: 20px;">Join us in celebrating this beautiful day. Below is the navigation map to guide you straight to the hall gates.</p>
+            <p style="text-align: center; color: #7f8c8d; font-size: 0.95rem; margin-bottom: 20px;">Join us in celebrating this beautiful day. Below is the navigation map to guide you straight to the venue.</p>
             
             <div class="map-container">
-                <iframe src="https://maps.google.com/maps?q=Diamond%20Palace%20Nagpur&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://maps.google.com/maps?q=Diamond%20Palace%20Nagpur&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrading"></iframe>
             </div>
         </section>
 
@@ -548,31 +647,73 @@
         }, 4000);
 
 
-        // --- 2. Inner Pre-Wedding Side Slideshow Logic (FIXED AUTOPLAY) ---
-        let sideSlideIndex = 1;
-        showSideSlides(sideSlideIndex);
+        // --- 2. Event Slideshows Logic (Individual slideshows for each event) ---
+        const eventSlideIndices = {
+            'prewedding': 1,
+            'mehendi': 1,
+            'sangeet': 1,
+            'haldi': 1,
+            'wedding': 1,
+            'reception': 1
+        };
 
-        function plusSideSlides(n) {
-            showSideSlides(sideSlideIndex += n);
+        const autoPlayIntervals = {};
+
+        function changeSlide(n, eventName) {
+            eventSlideIndices[eventName] += n;
+            showEventSlides(eventName);
+            resetAutoPlay(eventName);
         }
 
-        function showSideSlides(n) {
-            let i;
-            let sideSlides = document.getElementsByClassName("side-slide");
-            if (n > sideSlides.length) {sideSlideIndex = 1}    
-            if (n < 1) {sideSlideIndex = sideSlides.length}
-            for (i = 0; i < sideSlides.length; i++) {
-                sideSlides[i].style.display = "none";  
+        function showEventSlides(eventName) {
+            const container = document.getElementById(eventName + '-slideshow');
+            if (!container) return;
+
+            const slides = container.getElementsByClassName('event-slide');
+            let index = eventSlideIndices[eventName];
+
+            if (index > slides.length) {
+                eventSlideIndices[eventName] = 1;
+                index = 1;
             }
-            if (sideSlides.length > 0) {
-                sideSlides[sideSlideIndex-1].style.display = "block";  
+            if (index < 1) {
+                eventSlideIndices[eventName] = slides.length;
+                index = slides.length;
+            }
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            if (slides.length > 0) {
+                slides[index - 1].style.display = "block";
             }
         }
 
-        // Added missing loop to automatically cycle the pre-wedding slideshow images every 3 seconds
-        setInterval(function() {
-            plusSideSlides(1);
-        }, 3000);
+        // Initialize all slideshows
+        function initializeSlides() {
+            for (let eventName in eventSlideIndices) {
+                showEventSlides(eventName);
+                startAutoPlay(eventName);
+            }
+        }
+
+        function startAutoPlay(eventName) {
+            if (autoPlayIntervals[eventName]) {
+                clearInterval(autoPlayIntervals[eventName]);
+            }
+            autoPlayIntervals[eventName] = setInterval(function() {
+                eventSlideIndices[eventName]++;
+                showEventSlides(eventName);
+            }, 3000);
+        }
+
+        function resetAutoPlay(eventName) {
+            startAutoPlay(eventName);
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', initializeSlides);
     </script>
 </body>
 </html>
