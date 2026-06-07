@@ -1,156 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Pragati's Wedding</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #fff8f0;
-      color: #333;
-    }
-    header {
-      background: #ff6f61;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    nav {
-      background: #333;
-      padding: 10px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px;
-      text-align: center;
-    }
-    h2 {
-      color: #ff6f61;
-    }
-    .slideshow-container {
-      position: relative;
-      max-width: 600px;
-      margin: auto;
-    }
-    .slides {
-      display: none;
-    }
-    img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .fade {
-      animation: fade 2s;
-    }
-    @keyframes fade {
-      from {opacity: .4} 
-      to {opacity: 1}
-    }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pragati's Wedding</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fdf8f5;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img1.jpg') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            color: #f1c40f;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: #8e44ad;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 2px;
+            background: #e74c3c;
+            margin: 10px auto 0;
+        }
+
+        /* Slideshow Styles */
+        .slideshow-container {
+            max-width: 500px;
+            position: relative;
+            margin: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+            height: 650px;
+        }
+
+        .slide {
+            display: none;
+            height: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: middle;
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .caption {
+            color: #fff;
+            font-size: 14px;
+            padding: 12px 24px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+        }
+
+        .dots-container {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 40px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Timeline / Events Section */
+        .timeline {
+            position: relative;
+            margin: 50px auto;
+            padding: 20px 0;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background: #e0e0e0;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #8e44ad;
+            border: 3px solid #fff;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-panel {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-panel::before {
+            content: " ";
+            position: absolute;
+            top: 24px;
+            right: -10px;
+            border-top: 10px solid transparent;
+            border-left: 10px solid white;
+            border-bottom: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(even) .timeline-panel::before {
+            content: " ";
+            position: absolute;
+            top: 24px;
+            left: -10px;
+            border-top: 10px solid transparent;
+            border-right: 10px solid white;
+            border-bottom: 10px solid transparent;
+        }
+
+        .event-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #d35400;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .event-date {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Maps Section */
+        .venue-section {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-top: 40px;
+        }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 45%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 15px;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 50px;
+                padding-right: 20px;
+                text-align: left !important;
+            }
+            .timeline-badge {
+                left: 20px;
+            }
+            .timeline-item:nth-child(odd) .timeline-panel::before {
+                left: -10px;
+                right: auto;
+                border-right: 10px solid white;
+                border-left: 0;
+            }
+            .map-container {
+                padding-bottom: 70%;
+            }
+            .slideshow-container {
+                height: 500px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>Pragati's Wedding</h1>
-  <p>Celebrating Love & Togetherness</p>
-</header>
+    <header>
+        <h1>Pragati's Wedding</h1>
+        <p>A Celebration of Love, Traditions, & Togetherness</p>
+    </header>
 
-<nav>
-  <a href="#sangeet">Sangeet</a>
-  <a href="#mehendi">Mehendi</a>
-  <a href="#haldi">Haldi</a>
-  <a href="#marriage">Marriage</a>
-  <a href="#reception">Reception</a>
-  <a href="#prewedding">Pre-Wedding Shoot</a>
-  <a href="#location">Hall Location</a>
-</nav>
+    <div class="container">
+        
+        <section>
+            <h2 class="section-title">Glimpses of Celebrations</h2>
+            
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <img src="img1.jpg" alt="Pragati in elegant Green Saree">
+                    <div class="caption">The Grand Wedding Celebrations - Traditional Green Saree Look</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img2.jpg" alt="Pragati in Yellow Outfit Front Shot">
+                    <div class="caption">Haldi Ceremony - Radiant in Yellow and Pink Dupatta</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img3.jpg" alt="Pragati in Yellow Outfit Looking Sideways">
+                    <div class="caption">Haldi & Sangeet Beats - Capturing the Vibrant Moments</div>
+                </div>
+                <div class="slide fade">
+                    <img src="img4.jpg" alt="Pragati Adjusting her Dupatta">
+                    <div class="caption">Pre-Wedding Preps & Rituals</div>
+                </div>
 
-<section id="slideshow">
-  <h2>Wedding Memories</h2>
-  <div class="slideshow-container">
-    <div class="slides fade">
-      <img src="photo1.jpg" alt="Wedding Photo 1">
+                <a class="prev" onclick="plusSlides(-1)">❮</a>
+                <a class="next" onclick="plusSlides(1)">❯</a>
+            </div>
+
+            <div class="dots-container">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Wedding Itinerary</h2>
+            <ul class="timeline">
+                <li class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="event-title">Pre-Wedding Photoshoot</div>
+                        <div class="event-date">The Journey Begins</div>
+                        <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="event-title">Mehendi Ceremony</div>
+                        <div class="event-date">Day 1 - Evening</div>
+                        <p>Henna designs, festive songs, and beautiful green tones setting up the wedding vibe.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="event-title">Sangeet Program</div>
+                        <div class="event-date">Day 1 - Night</div>
+                        <p>A night full of energetic dance performances, family acts, and dynamic music celebrations.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="event-title">Haldi Ceremony</div>
+                        <div class="event-date">Day 2 - Morning</div>
+                        <p>The auspicious yellow dress occasion filled with turmeric blessings, water splashes, and joy.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="event-title">The Main Marriage Event</div>
+                        <div class="event-date">Day 2 - Muhurtam</div>
+                        <p>The sacred vows, wedding pheras, and exchange of garlands at Diamond Palace.</p>
+                    </div>
+                </li>
+                <li class="timeline-item">
+                    <div class="timeline-badge"></div>
+                    <div class="timeline-panel">
+                        <div class="event-title">Grand Reception</div>
+                        <div class="event-date">Day 2 - Dinner</div>
+                        <p>Welcoming the newlywed couple into their new life journey over a celebratory royal banquet.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="venue-section">
+            <h2 class="section-title">Wedding Venue & Locations</h2>
+            <p style="text-align: center; font-weight: 600; margin-bottom: 10px; color: #2c3e50;">Diamond Palace, Nagpur</p>
+            <p style="text-align: center; color: #7f8c8d; font-size: 0.95rem; margin-bottom: 20px;">Join us in celebrating this beautiful day. Below is the navigation map to guide you straight to the hall gates.</p>
+            
+            <div class="map-container">
+                <iframe src="https://maps.google.com/maps?q=Diamond%20Palace%20Nagpur&t=&z=13&ie=UTF8&iwloc=&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </section>
+
     </div>
-    <div class="slides fade">
-      <img src="photo2.jpg" alt="Wedding Photo 2">
-    </div>
-    <div class="slides fade">
-      <img src="photo3.jpg" alt="Haldi Photo">
-    </div>
-  </div>
-</section>
 
-<section id="sangeet">
-  <h2>Sangeet</h2>
-  <p>A night of music, dance, and joy with family and friends.</p>
-</section>
+    <footer>
+        <p>© 2026 Pragati's Wedding. Built with love to cherish forever.</p>
+    </footer>
 
-<section id="mehendi">
-  <h2>Mehendi</h2>
-  <p>Celebrating with beautiful henna designs and laughter.</p>
-</section>
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
 
-<section id="haldi">
-  <h2>Haldi</h2>
-  <p>Traditional haldi ceremony with blessings and vibrant colors.</p>
-</section>
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-<section id="marriage">
-  <h2>Marriage Ceremony</h2>
-  <p>The sacred union of Pragati and her partner surrounded by loved ones.</p>
-</section>
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
 
-<section id="reception">
-  <h2>Reception</h2>
-  <p>A grand celebration to honor the newlyweds.</p>
-</section>
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+        }
 
-<section id="prewedding">
-  <h2>Pre-Wedding Shoot</h2>
-  <p>Capturing the love story before the big day.</p>
-  <img src="prewedding.jpg" alt="Pre-Wedding Shoot">
-</section>
-
-<section id="location">
-  <h2>Marriage Hall Location</h2>
-  <p>ABC Banquet Hall, Wardha, Maharashtra</p>
-  <iframe src="https://www.google.com/maps/embed?...your hall location link..." 
-          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-</section>
-
-<footer>
-  <p>© 2026 Pragati's Wedding | Designed with Love</p>
-</footer>
-
-<script>
-let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let slides = document.getElementsByClassName("slides");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  slides[slideIndex-1].style.display = "block";  
-  setTimeout(showSlides, 3000); // Change image every 3 seconds
-}
-</script>
-
+        // Automatic Slideshow transition
+        setInterval(function() {
+            plusSlides(1);
+        }, 4000);
+    </script>
 </body>
 </html>
-
