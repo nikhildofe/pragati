@@ -22,7 +22,7 @@
         }
 
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('haldi/haldi1.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('haldi/haldi.jpg') no-repeat center center/cover;
             height: 60vh;
             display: flex;
             flex-direction: column;
@@ -390,20 +390,20 @@
             
             <div class="glimpses-container">
                 <div class="main-slide fade">
-                    <img src="wedding/wedding1.jpg" alt="Pragati in elegant Green Saree">
+                    <img src="wedding/wedding.jpg" alt="Pragati in elegant Green Saree">
                     <div class="caption">The Grand Wedding Celebrations - Traditional Green Saree Look</div>
                 </div>
                 <div class="main-slide fade">
-                    <img src="haldi/haldi1.jpg" alt="Pragati in Yellow Outfit Front Shot">
+                    <img src="haldi/haldi.jpg" alt="Pragati in Yellow Outfit Front Shot">
                     <div class="caption">Haldi Ceremony - Radiant in Yellow and Pink Dupatta</div>
                 </div>
                 <div class="main-slide fade">
-                    <img src="haldi/haldi2.jpg" alt="Pragati in Yellow Outfit Looking Sideways">
-                    <div class="caption">Haldi & Sangeet Beats - Capturing the Vibrant Moments</div>
+                    <img src="pre_wedding_shoot/pre_wedding.jpg" alt="Pragati Adjusting her Dupatta">
+                    <div class="caption">Pre-Wedding Preps & Rituals</div>
                 </div>
                 <div class="main-slide fade">
-                    <img src="pre_wedding_shoot/pre_wedding_1.jpg" alt="Pragati Adjusting her Dupatta">
-                    <div class="caption">Pre-Wedding Preps & Rituals</div>
+                    <img src="mehendi/mehendi.jpg" alt="Mehendi Ceremony">
+                    <div class="caption">Mehendi & Celebrations - Beautiful Henna Moments</div>
                 </div>
 
                 <a class="prev" onclick="plusMainSlides(-1)">❮</a>
@@ -432,17 +432,8 @@
                                 <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="prewedding-slideshow">
-                                <div class="event-slide fade">
-                                    <img src="pre_wedding_shoot/pre_wedding_1.jpg" alt="Pre-Wedding Shoot 1">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="pre_wedding_shoot/pre_wedding_2.jpg" alt="Pre-Wedding Shoot 2">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="pre_wedding_shoot/pre_wedding_3.jpg" alt="Pre-Wedding Shoot 3">
-                                </div>
-
+                            <div class="event-slideshow-container" id="prewedding-slideshow" data-folder="pre_wedding_shoot">
+                                <!-- Images will be loaded dynamically -->
                                 <a class="prev" onclick="changeSlide(-1, 'prewedding')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'prewedding')">❯</a>
                             </div>
@@ -460,17 +451,8 @@
                                 <p>Henna designs, festive songs, and beautiful green tones setting up the wedding vibe.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="mehendi-slideshow">
-                                <div class="event-slide fade">
-                                    <img src="mehendi/mehendi_1.jpg" alt="Mehendi Ceremony 1">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="mehendi/mehendi_2.jpg" alt="Mehendi Ceremony 2">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="mehendi/mehendi_3.jpg" alt="Mehendi Ceremony 3">
-                                </div>
-
+                            <div class="event-slideshow-container" id="mehendi-slideshow" data-folder="mehendi">
+                                <!-- Images will be loaded dynamically -->
                                 <a class="prev" onclick="changeSlide(-1, 'mehendi')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'mehendi')">❯</a>
                             </div>
@@ -488,17 +470,8 @@
                                 <p>A night full of energetic dance performances, family acts, and dynamic music celebrations.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="sangeet-slideshow">
-                                <div class="event-slide fade">
-                                    <img src="sangeet/sangeet_1.jpg" alt="Sangeet Program 1">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="sangeet/sangeet_2.jpg" alt="Sangeet Program 2">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="sangeet/sangeet_3.jpg" alt="Sangeet Program 3">
-                                </div>
-
+                            <div class="event-slideshow-container" id="sangeet-slideshow" data-folder="sangeet">
+                                <!-- Images will be loaded dynamically -->
                                 <a class="prev" onclick="changeSlide(-1, 'sangeet')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'sangeet')">❯</a>
                             </div>
@@ -516,17 +489,8 @@
                                 <p>The auspicious yellow dress occasion filled with turmeric blessings, water splashes, and joy.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="haldi-slideshow">
-                                <div class="event-slide fade">
-                                    <img src="haldi/haldi_1.jpg" alt="Haldi Ceremony 1">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="haldi/haldi_2.jpg" alt="Haldi Ceremony 2">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="haldi/haldi_3.jpg" alt="Haldi Ceremony 3">
-                                </div>
-
+                            <div class="event-slideshow-container" id="haldi-slideshow" data-folder="haldi">
+                                <!-- Images will be loaded dynamically -->
                                 <a class="prev" onclick="changeSlide(-1, 'haldi')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'haldi')">❯</a>
                             </div>
@@ -544,17 +508,8 @@
                                 <p>The sacred vows, wedding pheras, and exchange of garlands at Diamond Palace.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="wedding-slideshow">
-                                <div class="event-slide fade">
-                                    <img src="wedding/wedding_1.jpg" alt="Wedding Ceremony 1">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="wedding/wedding_2.jpg" alt="Wedding Ceremony 2">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="wedding/wedding_3.jpg" alt="Wedding Ceremony 3">
-                                </div>
-
+                            <div class="event-slideshow-container" id="wedding-slideshow" data-folder="wedding">
+                                <!-- Images will be loaded dynamically -->
                                 <a class="prev" onclick="changeSlide(-1, 'wedding')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'wedding')">❯</a>
                             </div>
@@ -572,17 +527,8 @@
                                 <p>Welcoming the newlywed couple into their new life journey over a celebratory royal banquet.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="reception-slideshow">
-                                <div class="event-slide fade">
-                                    <img src="reception/reception_1.jpg" alt="Reception 1">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="reception/reception_2.jpg" alt="Reception 2">
-                                </div>
-                                <div class="event-slide fade">
-                                    <img src="reception/reception_3.jpg" alt="Reception 3">
-                                </div>
-
+                            <div class="event-slideshow-container" id="reception-slideshow" data-folder="reception">
+                                <!-- Images will be loaded dynamically -->
                                 <a class="prev" onclick="changeSlide(-1, 'reception')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'reception')">❯</a>
                             </div>
@@ -647,7 +593,7 @@
         }, 4000);
 
 
-        // --- 2. Event Slideshows Logic (Individual slideshows for each event) ---
+        // --- 2. Event Slideshows Logic (Dynamic - Works with ANY number of images) ---
         const eventSlideIndices = {
             'prewedding': 1,
             'mehendi': 1,
@@ -658,8 +604,100 @@
         };
 
         const autoPlayIntervals = {};
+        const eventImages = {
+            'prewedding': [],
+            'mehendi': [],
+            'sangeet': [],
+            'haldi': [],
+            'wedding': [],
+            'reception': []
+        };
+
+        // Function to attempt loading images by number
+        // This will try loading images starting from 1 and stop when it gets a 404
+        async function loadEventImages() {
+            const events = ['prewedding', 'mehendi', 'sangeet', 'haldi', 'wedding', 'reception'];
+            const folderMap = {
+                'prewedding': 'pre_wedding_shoot',
+                'mehendi': 'mehendi',
+                'sangeet': 'sangeet',
+                'haldi': 'haldi',
+                'wedding': 'wedding',
+                'reception': 'reception'
+            };
+
+            for (let event of events) {
+                const folder = folderMap[event];
+                let imageCount = 0;
+                let imageNumber = 1;
+                
+                // Try common image formats
+                const formats = ['.jpg', '.png', '.jpeg', '.JPG'];
+                
+                // Try loading images 1-20
+                for (let i = 1; i <= 20; i++) {
+                    let loaded = false;
+                    
+                    for (let format of formats) {
+                        const imagePath = `${folder}/${event}${i}${format}`;
+                        
+                        // Test if image exists using a fetch request
+                        try {
+                            const response = await fetch(imagePath, { method: 'HEAD' });
+                            if (response.ok) {
+                                eventImages[event].push(imagePath);
+                                loaded = true;
+                                break;
+                            }
+                        } catch (e) {
+                            // Continue trying
+                        }
+                    }
+                    
+                    // If no image found, stop searching for this event
+                    if (!loaded && i > 3) {
+                        break;
+                    }
+                }
+                
+                // Create slides for loaded images
+                if (eventImages[event].length > 0) {
+                    createEventSlides(event, eventImages[event]);
+                    startAutoPlay(event);
+                }
+            }
+        }
+
+        function createEventSlides(eventName, imagePaths) {
+            const container = document.getElementById(eventName + '-slideshow');
+            if (!container) return;
+
+            // Clear existing slides
+            const existingSlides = container.querySelectorAll('.event-slide');
+            existingSlides.forEach(slide => slide.remove());
+
+            // Add new slides for each image
+            imagePaths.forEach((imagePath, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'event-slide fade';
+                
+                const img = document.createElement('img');
+                img.src = imagePath;
+                img.alt = `${eventName} Photo ${index + 1}`;
+                img.onerror = function() {
+                    // If image fails to load, try with just the filename
+                    console.log('Image not found:', imagePath);
+                };
+                
+                slideDiv.appendChild(img);
+                container.insertBefore(slideDiv, container.querySelector('.prev'));
+            });
+
+            showEventSlides(eventName);
+        }
 
         function changeSlide(n, eventName) {
+            if (eventImages[eventName].length === 0) return;
             eventSlideIndices[eventName] += n;
             showEventSlides(eventName);
             resetAutoPlay(eventName);
@@ -690,21 +728,15 @@
             }
         }
 
-        // Initialize all slideshows
-        function initializeSlides() {
-            for (let eventName in eventSlideIndices) {
-                showEventSlides(eventName);
-                startAutoPlay(eventName);
-            }
-        }
-
         function startAutoPlay(eventName) {
             if (autoPlayIntervals[eventName]) {
                 clearInterval(autoPlayIntervals[eventName]);
             }
             autoPlayIntervals[eventName] = setInterval(function() {
-                eventSlideIndices[eventName]++;
-                showEventSlides(eventName);
+                if (eventImages[eventName].length > 0) {
+                    eventSlideIndices[eventName]++;
+                    showEventSlides(eventName);
+                }
             }, 3000);
         }
 
@@ -713,7 +745,7 @@
         }
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', initializeSlides);
+        document.addEventListener('DOMContentLoaded', loadEventImages);
     </script>
 </body>
 </html>
