@@ -73,8 +73,8 @@
             margin: 10px auto 0;
         }
 
-        /* Slideshow Styles */
-        .slideshow-container {
+        /* Top Glimpses Slideshow Styles */
+        .glimpses-container {
             max-width: 500px;
             position: relative;
             margin: auto;
@@ -85,51 +85,16 @@
             height: 650px;
         }
 
-        .slide {
+        .main-slide {
             display: none;
             height: 100%;
         }
 
-        .slide img {
+        .main-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             vertical-align: middle;
-        }
-
-        .fade {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
         }
 
         .caption {
@@ -165,7 +130,7 @@
             background-color: #717171;
         }
 
-        /* Timeline / Events Section */
+        /* Base Timeline / Events Section Layout */
         .timeline {
             position: relative;
             margin: 50px auto;
@@ -220,6 +185,84 @@
             border-radius: 8px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             position: relative;
+        }
+
+        /* Combined Layout for the Pre-Wedding Shoot Section */
+        .pre-wedding-flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 25px;
+        }
+
+        .pre-wedding-info {
+            flex: 1.2;
+        }
+
+        /* Side Show Container for Pre-Wedding Photos */
+        .side-slideshow-container {
+            flex: 1;
+            max-width: 240px;
+            height: 160px;
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            background: #111;
+        }
+
+        .side-slide {
+            display: none;
+            height: 100%;
+            width: 100%;
+        }
+
+        .side-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Arrow navigation design shared between both sliders */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 12px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 16px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .glimpses-container .prev, .glimpses-container .next {
+            padding: 16px;
+            font-size: 18px;
+        }
+
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
         }
 
         .timeline-item:nth-child(odd) .timeline-panel::before {
@@ -294,6 +337,7 @@
             font-size: 0.9rem;
         }
 
+        /* Responsive Breakpoints */
         @media (max-width: 768px) {
             .timeline::before {
                 left: 20px;
@@ -314,10 +358,19 @@
                 border-right: 10px solid white;
                 border-left: 0;
             }
+            .pre-wedding-flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .side-slideshow-container {
+                max-width: 100%;
+                height: 220px;
+                margin-top: 10px;
+            }
             .map-container {
                 padding-bottom: 70%;
             }
-            .slideshow-container {
+            .glimpses-container {
                 height: 500px;
             }
         }
@@ -332,50 +385,75 @@
 
     <div class="container">
         
+        <!-- Top Glimpses Section -->
         <section>
             <h2 class="section-title">Glimpses of Celebrations</h2>
             
-            <div class="slideshow-container">
-                <div class="slide fade">
+            <div class="glimpses-container">
+                <div class="main-slide fade">
                     <img src="img1.jpg" alt="Pragati in elegant Green Saree">
                     <div class="caption">The Grand Wedding Celebrations - Traditional Green Saree Look</div>
                 </div>
-                <div class="slide fade">
+                <div class="main-slide fade">
                     <img src="img2.jpg" alt="Pragati in Yellow Outfit Front Shot">
                     <div class="caption">Haldi Ceremony - Radiant in Yellow and Pink Dupatta</div>
                 </div>
-                <div class="slide fade">
+                <div class="main-slide fade">
                     <img src="img3.jpg" alt="Pragati in Yellow Outfit Looking Sideways">
                     <div class="caption">Haldi & Sangeet Beats - Capturing the Vibrant Moments</div>
                 </div>
-                <div class="slide fade">
+                <div class="main-slide fade">
                     <img src="img4.jpg" alt="Pragati Adjusting her Dupatta">
                     <div class="caption">Pre-Wedding Preps & Rituals</div>
                 </div>
 
-                <a class="prev" onclick="plusSlides(-1)">❮</a>
-                <a class="next" onclick="plusSlides(1)">❯</a>
+                <a class="prev" onclick="plusMainSlides(-1)">❮</a>
+                <a class="next" onclick="plusMainSlides(1)">❯</a>
             </div>
 
             <div class="dots-container">
-                <span class="dot" onclick="currentSlide(1)"></span>
-                <span class="dot" onclick="currentSlide(2)"></span>
-                <span class="dot" onclick="currentSlide(3)"></span>
-                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentMainSlide(1)"></span>
+                <span class="dot" onclick="currentMainSlide(2)"></span>
+                <span class="dot" onclick="currentMainSlide(3)"></span>
+                <span class="dot" onclick="currentMainSlide(4)"></span>
             </div>
         </section>
 
+        <!-- Timeline Section -->
         <section>
             <h2 class="section-title">Wedding Itinerary</h2>
             <ul class="timeline">
+                
+                <!-- Pre-Wedding Photoshoot with Side Show Container Layout -->
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
-                        <div class="event-title">Pre-Wedding Photoshoot</div>
-                        <div class="event-date">The Journey Begins</div>
-                        <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
+                        <div class="pre-wedding-flex">
+                            <div class="pre-wedding-info">
+                                <div class="event-title">Pre-Wedding Photoshoot</div>
+                                <div class="event-date">The Journey Begins</div>
+                                <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
+                            </div>
+                            
+                            <!-- Side show carousel for pre wedding photos -->
+                            <div class="side-slideshow-container">
+                                <div class="side-slide fade">
+                                    <img src="pre_wedding_1.jpg" alt="Pre-Wedding Shoot 1">
+                                </div>
+                                <div class="side-slide fade">
+                                    <img src="pre_wedding_2.jpg" alt="Pre-Wedding Shoot 2">
+                                </div>
+                                <div class="side-slide fade">
+                                    <img src="pre_wedding_3.jpg" alt="Pre-Wedding Shoot 3">
+                                </div>
+
+                                <a class="prev" onclick="plusSideSlides(-1)">❮</a>
+                                <a class="next" onclick="plusSideSlides(1)">❯</a>
+                            </div>
+                        </div>
                     </div>
                 </li>
+
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
@@ -419,6 +497,7 @@
             </ul>
         </section>
 
+        <!-- Venue Maps Section -->
         <section class="venue-section">
             <h2 class="section-title">Wedding Venue & Locations</h2>
             <p style="text-align: center; font-weight: 600; margin-bottom: 10px; color: #2c3e50;">Diamond Palace, Nagpur</p>
@@ -436,37 +515,58 @@
     </footer>
 
     <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
+        // --- 1. Top Glimpses Main Slideshow Logic ---
+        let mainSlideIndex = 1;
+        showMainSlides(mainSlideIndex);
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+        function plusMainSlides(n) {
+            showMainSlides(mainSlideIndex += n);
         }
 
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        function currentMainSlide(n) {
+            showMainSlides(mainSlideIndex = n);
         }
 
-        function showSlides(n) {
+        function showMainSlides(n) {
             let i;
-            let slides = document.getElementsByClassName("slide");
+            let slides = document.getElementsByClassName("main-slide");
             let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
+            if (n > slides.length) {mainSlideIndex = 1}    
+            if (n < 1) {mainSlideIndex = slides.length}
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";  
             }
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[slideIndex-1].style.display = "block";  
-            dots[slideIndex-1].className += " active";
+            slides[mainSlideIndex-1].style.display = "block";  
+            dots[mainSlideIndex-1].className += " active";
         }
 
-        // Automatic Slideshow transition
+        // Automatic top slideshow transition
         setInterval(function() {
-            plusSlides(1);
+            plusMainSlides(1);
         }, 4000);
+
+
+        // --- 2. Inner Pre-Wedding Side Slideshow Logic ---
+        let sideSlideIndex = 1;
+        showSideSlides(sideSlideIndex);
+
+        function plusSideSlides(n) {
+            showSideSlides(sideSlideIndex += n);
+        }
+
+        function showSideSlides(n) {
+            let i;
+            let sideSlides = document.getElementsByClassName("side-slide");
+            if (n > sideSlides.length) {sideSlideIndex = 1}    
+            if (n < 1) {sideSlideIndex = sideSlides.length}
+            for (i = 0; i < sideSlides.length; i++) {
+                sideSlides[i].style.display = "none";  
+            }
+            sideSlides[sideSlideIndex-1].style.display = "block";  
+        }
     </script>
 </body>
 </html>
