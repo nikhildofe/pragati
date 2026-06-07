@@ -551,7 +551,6 @@
     <script>
         // --- 1. Top Glimpses Main Slideshow Logic ---
         let mainSlideIndex = 1;
-        showMainSlides(mainSlideIndex);
 
         function plusMainSlides(n) {
             showMainSlides(mainSlideIndex += n);
@@ -581,10 +580,15 @@
             }
         }
 
-        // Automatic top slideshow transition
-        setInterval(function() {
-            plusMainSlides(1);
-        }, 4000);
+        // Initialize main slideshow when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            showMainSlides(mainSlideIndex);
+            
+            // Automatic top slideshow transition (every 4 seconds)
+            setInterval(function() {
+                plusMainSlides(1);
+            }, 4000);
+        });
 
 
         // --- 2. Event Slideshows Logic (Dynamic - Works with ANY number of images) ---
@@ -622,7 +626,7 @@
                 const folder = folderMap[event];
                 let foundImages = [];
                 
-                // Try loading up to 50 images (no hardcoded numbering shown)
+                // Try loading up to 50 images
                 const formats = ['.jpg', '.png', '.jpeg', '.JPG', '.PNG'];
                 
                 for (let i = 1; i <= 50; i++) {
