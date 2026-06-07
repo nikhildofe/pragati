@@ -432,8 +432,7 @@
                                 <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="prewedding-slideshow" data-folder="pre_wedding_shoot">
-                                <!-- Images will be loaded dynamically -->
+                            <div class="event-slideshow-container" id="prewedding-slideshow">
                                 <a class="prev" onclick="changeSlide(-1, 'prewedding')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'prewedding')">❯</a>
                             </div>
@@ -451,8 +450,7 @@
                                 <p>Henna designs, festive songs, and beautiful green tones setting up the wedding vibe.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="mehendi-slideshow" data-folder="mehendi">
-                                <!-- Images will be loaded dynamically -->
+                            <div class="event-slideshow-container" id="mehendi-slideshow">
                                 <a class="prev" onclick="changeSlide(-1, 'mehendi')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'mehendi')">❯</a>
                             </div>
@@ -470,8 +468,7 @@
                                 <p>A night full of energetic dance performances, family acts, and dynamic music celebrations.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="sangeet-slideshow" data-folder="sangeet">
-                                <!-- Images will be loaded dynamically -->
+                            <div class="event-slideshow-container" id="sangeet-slideshow">
                                 <a class="prev" onclick="changeSlide(-1, 'sangeet')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'sangeet')">❯</a>
                             </div>
@@ -489,8 +486,7 @@
                                 <p>The auspicious yellow dress occasion filled with turmeric blessings, water splashes, and joy.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="haldi-slideshow" data-folder="haldi">
-                                <!-- Images will be loaded dynamically -->
+                            <div class="event-slideshow-container" id="haldi-slideshow">
                                 <a class="prev" onclick="changeSlide(-1, 'haldi')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'haldi')">❯</a>
                             </div>
@@ -508,8 +504,7 @@
                                 <p>The sacred vows, wedding pheras, and exchange of garlands at Diamond Palace.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="wedding-slideshow" data-folder="wedding">
-                                <!-- Images will be loaded dynamically -->
+                            <div class="event-slideshow-container" id="wedding-slideshow">
                                 <a class="prev" onclick="changeSlide(-1, 'wedding')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'wedding')">❯</a>
                             </div>
@@ -527,8 +522,7 @@
                                 <p>Welcoming the newlywed couple into their new life journey over a celebratory royal banquet.</p>
                             </div>
                             
-                            <div class="event-slideshow-container" id="reception-slideshow" data-folder="reception">
-                                <!-- Images will be loaded dynamically -->
+                            <div class="event-slideshow-container" id="reception-slideshow">
                                 <a class="prev" onclick="changeSlide(-1, 'reception')">❮</a>
                                 <a class="next" onclick="changeSlide(1, 'reception')">❯</a>
                             </div>
@@ -613,56 +607,52 @@
             'reception': []
         };
 
-        // Function to attempt loading images by number
-        // This will try loading images starting from 1 and stop when it gets a 404
-        async function loadEventImages() {
-            const events = ['prewedding', 'mehendi', 'sangeet', 'haldi', 'wedding', 'reception'];
-            const folderMap = {
-                'prewedding': 'pre_wedding_shoot',
-                'mehendi': 'mehendi',
-                'sangeet': 'sangeet',
-                'haldi': 'haldi',
-                'wedding': 'wedding',
-                'reception': 'reception'
-            };
+        const folderMap = {
+            'prewedding': 'pre_wedding_shoot',
+            'mehendi': 'mehendi',
+            'sangeet': 'sangeet',
+            'haldi': 'haldi',
+            'wedding': 'wedding',
+            'reception': 'reception'
+        };
 
-            for (let event of events) {
+        // Load images dynamically - supports ANY number of photos
+        async function loadEventImages() {
+            for (let event in folderMap) {
                 const folder = folderMap[event];
-                let imageCount = 0;
-                let imageNumber = 1;
+                let foundImages = [];
                 
-                // Try common image formats
-                const formats = ['.jpg', '.png', '.jpeg', '.JPG'];
+                // Try loading up to 50 images (no hardcoded numbering shown)
+                const formats = ['.jpg', '.png', '.jpeg', '.JPG', '.PNG'];
                 
-                // Try loading images 1-20
-                for (let i = 1; i <= 20; i++) {
+                for (let i = 1; i <= 50; i++) {
                     let loaded = false;
                     
                     for (let format of formats) {
-                        const imagePath = `${folder}/${event}${i}${format}`;
+                        const imagePath = `${folder}/img${i}${format}`;
                         
-                        // Test if image exists using a fetch request
+                        // Use a simple fetch to test if image exists
                         try {
                             const response = await fetch(imagePath, { method: 'HEAD' });
                             if (response.ok) {
-                                eventImages[event].push(imagePath);
+                                foundImages.push(imagePath);
                                 loaded = true;
                                 break;
                             }
                         } catch (e) {
-                            // Continue trying
+                            // Continue to next format
                         }
                     }
                     
-                    // If no image found, stop searching for this event
-                    if (!loaded && i > 3) {
+                    // Stop searching if we haven't found an image in last 5 attempts
+                    if (!loaded && foundImages.length > 0 && i > foundImages.length + 4) {
                         break;
                     }
                 }
                 
-                // Create slides for loaded images
-                if (eventImages[event].length > 0) {
-                    createEventSlides(event, eventImages[event]);
+                // Create slides for all found images
+                if (foundImages.length > 0) {
+                    createEventSlides(event, foundImages);
                     startAutoPlay(event);
                 }
             }
@@ -683,16 +673,13 @@
                 
                 const img = document.createElement('img');
                 img.src = imagePath;
-                img.alt = `${eventName} Photo ${index + 1}`;
-                img.onerror = function() {
-                    // If image fails to load, try with just the filename
-                    console.log('Image not found:', imagePath);
-                };
+                img.alt = `${eventName}`;
                 
                 slideDiv.appendChild(img);
                 container.insertBefore(slideDiv, container.querySelector('.prev'));
             });
 
+            eventImages[eventName] = imagePaths;
             showEventSlides(eventName);
         }
 
