@@ -22,7 +22,7 @@
         }
 
         header {
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('img2.jpg') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('haldi/haldi1.jpg') no-repeat center center/cover;
             height: 60vh;
             display: flex;
             flex-direction: column;
@@ -385,25 +385,24 @@
 
     <div class="container">
         
-        <!-- Top Glimpses Section -->
         <section>
             <h2 class="section-title">Glimpses of Celebrations</h2>
             
             <div class="glimpses-container">
                 <div class="main-slide fade">
-                    <img src="img1.jpg" alt="Pragati in elegant Green Saree">
+                    <img src="wedding/wedding1.jpg" alt="Pragati in elegant Green Saree">
                     <div class="caption">The Grand Wedding Celebrations - Traditional Green Saree Look</div>
                 </div>
                 <div class="main-slide fade">
-                    <img src="img2.jpg" alt="Pragati in Yellow Outfit Front Shot">
+                    <img src="haldi/haldi1.jpg" alt="Pragati in Yellow Outfit Front Shot">
                     <div class="caption">Haldi Ceremony - Radiant in Yellow and Pink Dupatta</div>
                 </div>
                 <div class="main-slide fade">
-                    <img src="img3.jpg" alt="Pragati in Yellow Outfit Looking Sideways">
+                    <img src="haldi/haldi2.jpg" alt="Pragati in Yellow Outfit Looking Sideways">
                     <div class="caption">Haldi & Sangeet Beats - Capturing the Vibrant Moments</div>
                 </div>
                 <div class="main-slide fade">
-                    <img src="img4.jpg" alt="Pragati Adjusting her Dupatta">
+                    <img src="pre_wedding_shoot/pre_wedding_1.jpg" alt="Pragati Adjusting her Dupatta">
                     <div class="caption">Pre-Wedding Preps & Rituals</div>
                 </div>
 
@@ -419,12 +418,10 @@
             </div>
         </section>
 
-        <!-- Timeline Section -->
         <section>
             <h2 class="section-title">Wedding Itinerary</h2>
             <ul class="timeline">
                 
-                <!-- Pre-Wedding Photoshoot with Side Show Container Layout -->
                 <li class="timeline-item">
                     <div class="timeline-badge"></div>
                     <div class="timeline-panel">
@@ -435,16 +432,15 @@
                                 <p>Capturing beautiful moments of love and laughter ahead of the big day.</p>
                             </div>
                             
-                            <!-- Side show carousel for pre wedding photos -->
                             <div class="side-slideshow-container">
                                 <div class="side-slide fade">
-                                    <img src="pre_wedding_1.jpg" alt="Pre-Wedding Shoot 1">
+                                    <img src="pre_wedding_shoot/pre_wedding_1.jpg" alt="Pre-Wedding Shoot 1">
                                 </div>
                                 <div class="side-slide fade">
-                                    <img src="pre_wedding_2.jpg" alt="Pre-Wedding Shoot 2">
+                                    <img src="pre_wedding_shoot/pre_wedding_2.jpg" alt="Pre-Wedding Shoot 2">
                                 </div>
                                 <div class="side-slide fade">
-                                    <img src="pre_wedding_3.jpg" alt="Pre-Wedding Shoot 3">
+                                    <img src="pre_wedding_shoot/pre_wedding_3.jpg" alt="Pre-Wedding Shoot 3">
                                 </div>
 
                                 <a class="prev" onclick="plusSideSlides(-1)">❮</a>
@@ -497,7 +493,6 @@
             </ul>
         </section>
 
-        <!-- Venue Maps Section -->
         <section class="venue-section">
             <h2 class="section-title">Wedding Venue & Locations</h2>
             <p style="text-align: center; font-weight: 600; margin-bottom: 10px; color: #2c3e50;">Diamond Palace, Nagpur</p>
@@ -539,8 +534,12 @@
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[mainSlideIndex-1].style.display = "block";  
-            dots[mainSlideIndex-1].className += " active";
+            if (slides.length > 0) {
+                slides[mainSlideIndex-1].style.display = "block";  
+            }
+            if (dots.length > 0) {
+                dots[mainSlideIndex-1].className += " active";
+            }
         }
 
         // Automatic top slideshow transition
@@ -549,7 +548,7 @@
         }, 4000);
 
 
-        // --- 2. Inner Pre-Wedding Side Slideshow Logic ---
+        // --- 2. Inner Pre-Wedding Side Slideshow Logic (FIXED AUTOPLAY) ---
         let sideSlideIndex = 1;
         showSideSlides(sideSlideIndex);
 
@@ -565,8 +564,15 @@
             for (i = 0; i < sideSlides.length; i++) {
                 sideSlides[i].style.display = "none";  
             }
-            sideSlides[sideSlideIndex-1].style.display = "block";  
+            if (sideSlides.length > 0) {
+                sideSlides[sideSlideIndex-1].style.display = "block";  
+            }
         }
+
+        // Added missing loop to automatically cycle the pre-wedding slideshow images every 3 seconds
+        setInterval(function() {
+            plusSideSlides(1);
+        }, 3000);
     </script>
 </body>
 </html>
